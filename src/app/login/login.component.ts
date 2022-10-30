@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   errors: any;
 loginForm: any;
 
-  preparaCadastrar() {
-    
+  preparaCadastrar(event: { preventDefault: () => void; }) {
+    event.preventDefault();
     this.errors = [];
     this.cadastrando = true;
     

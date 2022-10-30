@@ -1,4 +1,3 @@
-<!--generate a login page with password and email textfield without angular material-->
 <div class="bg-primary">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
@@ -48,7 +47,7 @@
                                 </div>
                                 <div class="card-footer text-center">
                                     <div class="small">
-                                        <a (click)="preparaCadastrar()" href="#">
+                                        <a (click)="preparaCadastrar($event)" href="#">
                                             {{ !cadastrando ? 'Não possui usuário? Cadastre-se' : ''}}
                                         </a>
                                     </div>
