@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page_four</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="info">
+
+            <div class="photo-info-pr">
+                <img class="photo-info" src="assets/images/login cozinha.png">
+                <p class="pr">Meu Dados</p>
+            </div>
+
+            <div class="radio_user">
+                <label>Sou Usuário:
+                    <input type="checkbox">
+                </label>
+
+                <label>Sou Profissional:
+                    <input type="checkbox">
+                </label>
+            </div>
+
+        </div>
+
+        <form>
+
+            <div class="form-input">
+                <label>Nome:</label>
+                <input class="inputs" type="name" name="name" id="name" [(ngModel)]="usuarioACadastrar.nome" />
+            </div>
+
+            <div class="form-input">
+                <label>Endereço:</label>
+                <input class="inputs" type="name" name="endereco" id="endereco" [(ngModel)]="usuarioACadastrar.cep" />
+                <label for="">Número:</label>
+                <input class="inputs" type="name" name="numero" id="numero" [(ngModel)]="usuarioACadastrar.numeroResidencia" />
+            </div>
+
+
+
+            <div class="form-input">
+                <label>Telefone:</label>
+                <input class="inputs" type="name" name="telefone" id="telefone" [(ngModel)]="usuarioACadastrar.telefone" />
+            </div>
+
+            <div class="form-input">
+                <label>E-mail:</label>
+                <input class="inputs" type="email" name="email" id="email" [(ngModel)]="usuarioACadastrar.email" />
+            </div>
+
+            <div class="form-input">
+                <label>Senha:</label>
+                <input class="inputs" type="password" name="senha" id="senha" [(ngModel)]="usuarioACadastrar.senha" />
+            </div>
+
+            <div class="form-input">
+                <label>Confime a senha:</label>
+                <input class="inputs" type="password" name="senha-conf" id="senha-conf" />
+            </div>
+
+        </form>
+
+        <footer>
+            <div class="buttons">
+                <button (click)='voltarParaLogin()'>Voltar</button>
+                <button (click)="cadastrar()">Cadastro</button>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

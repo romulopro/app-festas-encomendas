@@ -8,14 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   username: any;
   password: any;
   cadastrando: boolean = false;
   mensagemSucesso: any;
   errors: any;
-loginForm: any;
+  loginForm: any;
 
-  preparaCadastrar(event: { preventDefault: () => void; }) {
+  preparaCadastrar(event: MouseEvent) {
     event.preventDefault();
     this.errors = [];
     this.cadastrando = true;
@@ -34,9 +35,14 @@ loginForm: any;
   }
 
 
-  constructor() { }
+  irParaTelaCadastro() {
+    this.router.navigate(['/cadastro']);
+  }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  
 
 }
