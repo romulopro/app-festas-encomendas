@@ -1,5 +1,8 @@
 # AppFestasEncomendas
 
+Projeto Integrador da UNIVESP
+Instalar node v16.14.2 e Angular 13.2.6
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
 ## Development server
