@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioDados } from '../interfaces/usuario-dados';
+import { AutenticacaoService } from '../services/autenticacao.service';
 
 
 @Component({
@@ -20,14 +21,26 @@ export class CadastroComponent implements OnInit {
     complementoResidencia: 0,
     telefone: ''
   };
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private authService: AutenticacaoService) { }
 
   ngOnInit(): void {
   }
 
   cadastrar() {
-    throw new Error('Method not implemented.');
-    }
+    console.log(this.usuarioACadastrar);
+    const usuarioLogin = {email : this.usuarioACadastrar.email, senha : this.usuarioACadastrar.senha};
+      this.authService.cadastrar(usuarioLogin)
+      .then((res) => {
+          console.log(res);
+          this.router.navigate(['/login']);
+        }
+      ).catch((error) => {
+          console.log(error);
+        }
+      );
+  }
+
 
 
   voltarParaLogin() {
