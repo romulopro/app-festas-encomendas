@@ -32,7 +32,7 @@ export class LoginComponent {
   cadastrar() {
     const usuarioLogin = {email : this.username, senha : this.password};
       this.authService.cadastrar(usuarioLogin)
-      .then(() => {
+      .then((res) => {
           this.mensagemSucesso = "Cadastro realizado com sucesso!";
           this.cancelaCadastrar();
         }
@@ -45,7 +45,7 @@ export class LoginComponent {
   onSubmit() {
     console.log(this.username);
     const usuarioLogin = {email : this.username, senha : this.password};
-    this.authService.logar(usuarioLogin).then(() => {
+    this.authService.logar(usuarioLogin).then((res) => {
       this.router.navigate(['/home']);
     }).catch((error) => {
       this.errors = [error.message];
