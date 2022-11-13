@@ -2,78 +2,206 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page_four</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>page_two</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="info">
-
-            <div class="photo-info-pr">
-                <img class="photo-info" src="assets/images/login cozinha.png">
-                <p class="pr">Meu Dados</p>
-            </div>
-
-            <div class="radio_user">
-                <label>Sou Usuário:
-                    <input type="checkbox">
-                </label>
-
-                <label>Sou Profissional:
-                    <input type="checkbox">
-                </label>
-            </div>
-
+  <div class="container">
+    <form #fornecedorForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="photo-info-one">
+      <img class="photo" src="assets/images/photo1.jpg" />
+      <div class="structure">
+        <div class="texts">
+          <p class="text">Massa:</p>
+          <p class="text">Recheio:</p>
         </div>
 
-        <form>
+        <div class="inputs-up">
+          <label>Chocolate
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaChocolate" name="chocolate">
+          </label>
 
-            <div class="form-input">
-                <label>Nome:</label>
-                <input class="inputs" type="name" name="name" id="name" [(ngModel)]="usuarioACadastrar.nome" />
-            </div>
+          <label>Prestigio
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaPrestigio" >
+          </label>
 
-            <div class="form-input">
-                <label>Endereço:</label>
-                <input class="inputs" type="name" name="endereco" id="endereco" [(ngModel)]="usuarioACadastrar.cep" />
-                <label for="">Número:</label>
-                <input class="inputs" type="name" name="numero" id="numero" [(ngModel)]="usuarioACadastrar.numeroResidencia" />
-            </div>
+          <label>Musse de Maracuja
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazRecheioMusseMaracuja">
+          </label>
+        </div>
 
+        <div class="inputs-low">
 
+          <label>Baunilha
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaBaunilha">
+          </label>
 
-            <div class="form-input">
-                <label>Telefone:</label>
-                <input class="inputs" type="name" name="telefone" id="telefone" [(ngModel)]="usuarioACadastrar.telefone" />
-            </div>
+          <label>Brigadeiro
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaBrigadeiro">
+          </label>
 
-            <div class="form-input">
-                <label>E-mail:</label>
-                <input class="inputs" type="email" name="email" id="email" [(ngModel)]="usuarioACadastrar.email" />
-            </div>
-
-            <div class="form-input">
-                <label>Senha:</label>
-                <input class="inputs" type="password" name="senha" id="senha" [(ngModel)]="usuarioACadastrar.senha" />
-            </div>
-
-            <div class="form-input">
-                <label>Confime a senha:</label>
-                <input class="inputs" type="password" name="senha-conf" id="senha-conf" />
-            </div>
-
-        </form>
-
-        <footer>
-            <div class="buttons">
-                <button (click)='voltarParaLogin()'>Voltar</button>
-                <button (click)="cadastrar()">Cadastro</button>
-            </div>
-        </footer>
+          <label>Musse de Morango
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazRecheioMusseMorango">
+          </label>
+        </div>
+      </div>
     </div>
+
+    <div class="photo-info-two">
+      <img class="photo" src="assets/images/photo2.jpg" />
+      <div class="structure">
+        <div class="texts">
+          <p class="text">Docinhos:</p>
+        </div>
+
+        <div class="inputs-up">
+          <label>Cajuzinho
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazCajuzinho">
+          </label>
+
+          <label>Brigadeiro
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazBrigadeiro">
+          </label>
+
+          <label>Beijinho
+            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazBeijinho">
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="photo-info-three">
+      <img class="photo" src="assets/images/photo3.png" />
+      <div class="structure">
+        <div class="texts">
+          <p class="text">Temas:</p>
+        </div>
+
+        <div class="inputs-up">
+          <label>Princesas
+            <input type="checkbox">
+          </label>
+
+          <label>Animais
+            <input type="checkbox">
+          </label>
+
+          <label>Super Herois
+            <input type="checkbox">
+          </label>
+        </div>
+
+        <div class="inputs-low">
+
+          <label>Carros
+            <input type="checkbox">
+          </label>
+
+          <label>Times
+            <input type="checkbox">
+          </label>
+
+          <label>Dinossauros
+            <input type="checkbox">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <label for="cep">CEP</label>
+          <input type="string" class="form-control" id="cep" name="cep" placeholder="Digite o CEP" required="true" [(ngModel)]="usuarioACadastrar.cep">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="pesquisarCep()">Pesquisar</button>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="numero">Número</label>
+          <input type="text" class="form-control" id="numero" placeholder="Número" [(ngModel)]="usuarioACadastrar.numeroResidencia">
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="complemento">Complemento</label>
+          <input type="text" class="form-control" id="complemento" placeholder="Complemento">
+        </div>
+      </div>
+    </div>
+  </form>
+
+    <div class="endereco">
+      <label for="endereco">Endereço</label>
+      <input type="text" id="endereco" name="endereco" placeholder="Rua, Avenida, etc" [(ngModel)]="rua">
+    </div>
+
+    <!--Campo para digitar Bairro-->
+    <div class="bairro">
+      <label for="bairro">Bairro</label>
+      <input type="text" id="bairro" name="bairro" placeholder="Bairro">
+    </div>
+
+    <!--Campo para digitar Cidade-->
+    <div class="cidade">
+      <label for="cidade">Cidade</label>
+      <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+    </div>
+
+    <!--Campo para digitar Estado-->
+    <div class="estado">
+      <label for="estado">Estado</label>
+      <input type="text" id="estado" name="estado" placeholder="Estado">
+    </div>
+
+
+
+    <!-- Campo para contatos (facebook, instagram, etc) e telefone-->
+
+    <div class="contatos">
+      <label for="contatos">Rede Social</label>
+      <input type="text" id="contatos" name="contatos" placeholder="Facebook, Instagram, etc">
+    </div>
+
+
+    <!--Campo para digitar telefone-->
+    <div class="telefone">
+      <label for="telefone">Telefone</label>
+      <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+    </div>
+
+
+    <div class="button-finish-back">
+      <a class="button-back" src="" routerLink="/home">Voltar</a>
+      <a class="button-finish" src="" (click)="cadastrar()">Finalizar</a>
+    </div>
+
+    <footer></footer>
+
+
+
+  </div>
+
+
+
+
+
+  <!--Campo para digitar CEP-->
+
+
+
+  <!--Campo para digitar Endereço-->
+
 </body>
 
 </html>

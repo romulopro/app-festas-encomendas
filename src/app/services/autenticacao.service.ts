@@ -8,17 +8,17 @@ import { UsuarioLogin } from '../interfaces/usuario-login';
 })
 export class AutenticacaoService {
   
-  constructor(private afs: AngularFireAuth) { }
+  constructor(private afa: AngularFireAuth) { }
 
   cadastrar(usuarioLogin: UsuarioLogin) {
-    return this.afs.createUserWithEmailAndPassword(usuarioLogin.email, usuarioLogin.senha);
+    return this.afa.createUserWithEmailAndPassword(usuarioLogin.email, usuarioLogin.senha);
   }
 
   logar(usuarioLogin: UsuarioLogin) {
-    return this.afs.signInWithEmailAndPassword(usuarioLogin.email, usuarioLogin.senha);
+    return this.afa.signInWithEmailAndPassword(usuarioLogin.email, usuarioLogin.senha);
   }
 
   getAuth() {
-    return this.afs;
+    return this.afa;
   }
 }

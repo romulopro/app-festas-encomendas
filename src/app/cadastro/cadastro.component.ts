@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioDados } from '../interfaces/usuario-dados';
+import { UsuarioLogin } from '../interfaces/usuario-login';
 import { AutenticacaoService } from '../services/autenticacao.service';
+import { CadastroService } from '../services/cadastro.service';
+import { ConsultaCepService } from '../services/consulta-cep.service';
 
 
 @Component({
@@ -11,39 +14,41 @@ import { AutenticacaoService } from '../services/autenticacao.service';
 })
 export class CadastroComponent implements OnInit {
 
+onSubmit() {
+throw new Error('Method not implemented.');
+}
 
-  usuarioACadastrar: UsuarioDados = {
-    nome: '',
-    email: '',
-    senha: '',
-    cep: '',
-    numeroResidencia: 0,
-    complementoResidencia: 0,
-    telefone: ''
-  };
+  userId: any;
+  usuarioACadastrar!: UsuarioDados;;
+  rua = '';
+  estado = '';
+  bairro = '';
+  cidade = '';
   constructor(private router:Router,
-    private authService: AutenticacaoService) { }
+    private cadastroService: CadastroService,
+    private authService: AutenticacaoService,
+    private consultaCepService: ConsultaCepService) { }
 
   ngOnInit(): void {
+    this.usuarioACadastrar = new UsuarioDados();
   }
 
-  cadastrar() {
-    console.log(this.usuarioACadastrar);
-    const usuarioLogin = {email : this.usuarioACadastrar.email, senha : this.usuarioACadastrar.senha};
-      this.authService.cadastrar(usuarioLogin)
-      .then((res) => {
-          console.log(res);
-          this.router.navigate(['/login']);
-        }
-      ).catch((error) => {
-          console.log(error);
-        }
-      );
+  async cadastrar() {
+     this.authService.getAuth().currentUser.then((user) => {
+      this.userId= user?.uid;
+      this.usuarioACadastrar.id = this.userId;
+      console.log(this.userId);
+      this.cadastroService.userId = this.userId;
+      this.cadastroService.cria(this.usuarioACadastrar);
+    });
   }
 
-
-
-  voltarParaLogin() {
-    this.router.navigate(['/login']);
+  async pesquisarCep() {
+    //should get cep data from viacep
+    console.dir(this.usuarioACadastrar);
+    this.consultaCepService.consultaCEP(this.usuarioACadastrar.cep).subscribe((data) => {
+      console.log(data);
+    }
+    );  
   }
 }
