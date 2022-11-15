@@ -42,7 +42,7 @@ export class LoginComponent {
       );
   }
  
-  onSubmit() {
+  onSubmit(): void {
     console.log(this.username);
     const usuarioLogin = {email : this.username, senha : this.password};
     this.authService.logar(usuarioLogin).then((res) => {

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioDados } from '../interfaces/usuario-dados';
 import { UsuarioLogin } from '../interfaces/usuario-login';
+import { viaCep } from '../interfaces/via-cep';
 import { AutenticacaoService } from '../services/autenticacao.service';
 import { CadastroService } from '../services/cadastro.service';
 import { ConsultaCepService } from '../services/consulta-cep.service';
@@ -13,42 +15,98 @@ import { ConsultaCepService } from '../services/consulta-cep.service';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
+public cadastroForm: FormGroup;
 
-onSubmit() {
-throw new Error('Method not implemented.');
-}
+
 
   userId: any;
-  usuarioACadastrar!: UsuarioDados;;
-  rua = '';
-  estado = '';
-  bairro = '';
-  cidade = '';
   constructor(private router:Router,
     private cadastroService: CadastroService,
     private authService: AutenticacaoService,
-    private consultaCepService: ConsultaCepService) { }
+    private consultaCepService: ConsultaCepService
+    ,private formBuider: FormBuilder) { 
+      this.cadastroForm = this.formBuider.group({
+        userId : '',
+        cep : '',
+        nome : '',
+        numeroResidencia : 0,
+        complementoResidencia : '',
+        telefone : '',
+        fazMassaPrestigio : false,
+        fazMassaBrigadeiro : false,
+        fazMassaBaunilha : false,
+        fazMassaChocolate : false,
+        fazRecheioMusseMaracuja : false,
+        fazRecheioMusseMorango : false,
+        fazCajuzinho : false,
+        fazBeijinho : false,
+        fazBrigadeiro : false,
+        fazTemaCarros : false,
+        fazTemaTimes : false,
+        fazTemaPrincesas : false,
+        fazTemaSuperHerois : false,
+        fazTemaAnimais : false,
+        fazTemaDinossauros : false
+      });
 
+      this.authService.getAuth().currentUser.then((user) => {
+        // this.cadastroForm.setValue({userId :user?.uid });
+        console.log(user?.uid);
+        this.userId = user?.uid;
+        
+      });
+    }
+
+
+  //   export class UsuarioDados {
+  //     id!: string;
+  //     nome!: string;
+  //     cep!: string;
+  //     numeroResidencia!: number;
+  //     complementoResidencia!: number;
+  //     telefone!: string;
+  //     fazMassaPrestigio!: boolean;
+  //     fazMassaBrigadeiro!: boolean;
+  //     fazMassaBaunilha!: boolean;
+  //     fazMassaChocolate!: boolean;
+  //     fazRecheioMusseMaracuja!: boolean;
+  //     fazRecheioMusseMorango!: boolean;
+  //     fazCajuzinho!: boolean;
+  //     fazBeijinho!: boolean;
+  //     fazBrigadeiro!: boolean;
+  //     fazTemaCarros!: boolean;
+  //     fazTemaTimes!: boolean;
+  //     fazTemaPrincesas!: boolean;
+  //     fazTemaSuperHerois!: boolean;
+  //     fazTemaAnimais!: boolean;
+  //     fazTemaDinossauros!: boolean;
+  // }
   ngOnInit(): void {
-    this.usuarioACadastrar = new UsuarioDados();
-  }
 
-  async cadastrar() {
-     this.authService.getAuth().currentUser.then((user) => {
-      this.userId= user?.uid;
-      this.usuarioACadastrar.id = this.userId;
-      console.log(this.userId);
-      this.cadastroService.userId = this.userId;
-      this.cadastroService.cria(this.usuarioACadastrar);
-    });
+  }   
+
+  onSubmit() {
+    this.cadastroForm.patchValue({userId :this.userId });
+    this.cadastroService.cria(this.cadastroForm.value);
   }
 
   async pesquisarCep() {
     //should get cep data from viacep
-    console.dir(this.usuarioACadastrar);
-    this.consultaCepService.consultaCEP(this.usuarioACadastrar.cep).subscribe((data) => {
-      console.log(data);
-    }
-    );  
+    //console.dir(this.cadastroForm.value);
+    this.consultaCepService.consultaCEP(this.cadastroForm.value['cep']).subscribe((dados:any) => {
+      
+        //this.rua = dados.logradouro;
+        document.getElementById('logradouro')?.setAttribute('value', dados.logradouro);
+        document.getElementById('bairro')?.setAttribute('value', dados.bairro);
+        document.getElementById('cidade')?.setAttribute('value', dados.localidade);
+        document.getElementById('estado')?.setAttribute('value', dados.uf);
+
+        // this.estado = dados.uf;
+        // this.bairro = dados.bairro;
+        //this.cidade = dados.localidade;
+        console.log(dados);
+
+  
+    });
   }
 }

@@ -9,23 +9,24 @@ import { AutenticacaoService } from './autenticacao.service';
 })
 export class CadastroService {
   userId: any;
-  async recuperaDadosUsuario(id: string) {
+  recuperaDadosUsuario(id: string | undefined) {
     //should get user config from firebase
-    // this.userId = await this.authService.getAuth().currentUser).uid;
-    // console.log(this.userId);
+    return this.db.collection('fornecedores').doc(id).get();
+   
   }
 
-  constructor(private authService: AutenticacaoService, private db:AngularFirestore) { }
+  constructor(private authService: AutenticacaoService, private db:AngularFirestore) { 
+    
+  }
 
-  cria(fornecedor: UsuarioDados){
+  cria(fornecedor: UsuarioDados): Promise<any> {
     //should create usuario-dados in firebase
     console.log(fornecedor);
-    return new Promise<any>((resolve, reject) =>{
-      this.db.collection('usuario-dados').add(fornecedor)
-      .then(resolve => {
-        console.log(resolve);
-        
-      }, err => reject(err));
+    return this.authService.getAuth().currentUser.then((user) => {
+      console.log(user?.uid);
+      this.userId = user?.uid;
+      return this.db.collection('fornecedores').doc(this.userId).set(fornecedor);
     });
+      
   }
 }

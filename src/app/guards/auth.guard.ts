@@ -15,6 +15,7 @@ export class AuthGuard implements CanActivate {
   canActivate(): Promise<boolean> {
     return new Promise((resolve) => {
       this.authService.getAuth().onAuthStateChanged((user) => {
+        console.log("passou gusdl autenticacao");
         if (user) {
           resolve(true);
         } else {

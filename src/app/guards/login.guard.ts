@@ -16,12 +16,13 @@ export class LoginGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return new Promise((resolve) => {
       this.authService.getAuth().onAuthStateChanged((user) => {
+        console.log("passou gusdl login");
         if (user) {
-          resolve(true)
+          this.router.navigate(['home']);
         } else {
-          this.router.navigate(['/login']);
-          resolve(false);
+          resolve(true);
         }
+        
       });
     });
   }

@@ -11,180 +11,187 @@
 
 <body>
   <div class="container">
-    <form #fornecedorForm="ngForm" (ngSubmit)="onSubmit()">
-    <div class="photo-info-one">
-      <img class="photo" src="assets/images/photo1.jpg" />
-      <div class="structure">
-        <div class="texts">
-          <p class="text">Massa:</p>
-          <p class="text">Recheio:</p>
-        </div>
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="photo-info-one">
+        <img class="photo" src="assets/images/photo1.jpg" />
+        <div class="structure">
+          <div class="texts">
+            <p class="text">Massa:</p>
+            <p class="text">Recheio:</p>
+          </div>
 
-        <div class="inputs-up">
-          <label>Chocolate
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaChocolate" name="chocolate">
-          </label>
+          <div class="inputs-up">
+            <label>Chocolate
+              <input type="checkbox" formControlName="fazMassaChocolate" class="form-control" name="chocolate">
+            </label>
 
-          <label>Prestigio
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaPrestigio" >
-          </label>
+            <label>Prestigio
+              <input type="checkbox" formControlName="fazMassaPrestigio" class="form-control" name="prestigio">
+            </label>
 
-          <label>Musse de Maracuja
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazRecheioMusseMaracuja">
-          </label>
-        </div>
+            <label>Musse de Maracuja
+              <input type="checkbox" class="form-control" formControlName="fazRecheioMusseMaracuja">
+            </label>
+          </div>
 
-        <div class="inputs-low">
+          <div class="inputs-low">
 
-          <label>Baunilha
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaBaunilha">
-          </label>
+            <label>Baunilha
+              <input type="checkbox" class="form-control" formControlName="fazMassaBaunilha">
+            </label>
 
-          <label>Brigadeiro
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazMassaBrigadeiro">
-          </label>
+            <label>Brigadeiro
+              <input type="checkbox" class="form-control" formControlName="fazMassaBrigadeiro">
+            </label>
 
-          <label>Musse de Morango
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazRecheioMusseMorango">
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="photo-info-two">
-      <img class="photo" src="assets/images/photo2.jpg" />
-      <div class="structure">
-        <div class="texts">
-          <p class="text">Docinhos:</p>
-        </div>
-
-        <div class="inputs-up">
-          <label>Cajuzinho
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazCajuzinho">
-          </label>
-
-          <label>Brigadeiro
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazBrigadeiro">
-          </label>
-
-          <label>Beijinho
-            <input type="checkbox" [(ngModel)] = "usuarioACadastrar.fazBeijinho">
-          </label>
+            <label>Musse de Morango
+              <input type="checkbox" class="form-control" formControlName="fazRecheioMusseMorango">
+            </label>
+          </div>
         </div>
       </div>
-    </div>
 
+      <div class="photo-info-two">
+        <img class="photo" src="assets/images/photo2.jpg" />
+        <div class="structure">
+          <div class="texts">
+            <p class="text">Docinhos:</p>
+          </div>
 
+          <div class="inputs-up">
+            <label>Cajuzinho
+              <input type="checkbox" class="form-control" formControlName="fazCajuzinho">
+            </label>
 
+            <label>Brigadeiro
+              <input type="checkbox" class="form-control" formControlName="fazBrigadeiro">
+            </label>
 
-    <div class="photo-info-three">
-      <img class="photo" src="assets/images/photo3.png" />
-      <div class="structure">
-        <div class="texts">
-          <p class="text">Temas:</p>
-        </div>
-
-        <div class="inputs-up">
-          <label>Princesas
-            <input type="checkbox">
-          </label>
-
-          <label>Animais
-            <input type="checkbox">
-          </label>
-
-          <label>Super Herois
-            <input type="checkbox">
-          </label>
-        </div>
-
-        <div class="inputs-low">
-
-          <label>Carros
-            <input type="checkbox">
-          </label>
-
-          <label>Times
-            <input type="checkbox">
-          </label>
-
-          <label>Dinossauros
-            <input type="checkbox">
-          </label>
+            <label>Beijinho
+              <input type="checkbox" class="form-control" formControlName="fazBeijinho">
+            </label>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <div class="form-group">
+
+
+
+
+      <div class="photo-info-three">
+        <img class="photo" src="assets/images/photo3.png" />
+        <div class="structure">
+          <div class="texts">
+            <p class="text">Temas:</p>
+          </div>
+
+          <div class="inputs-up">
+            <label>Princesas
+              <input type="checkbox" class="form-control" formControlName="fazTemaPrincesas">
+            </label>
+
+            <label>Animais
+              <input type="checkbox" class="form-control" formControlName="fazTemaAnimais">
+            </label>
+
+            <label>Super Herois
+              <input type="checkbox" class="form-control" formControlName="fazTemaSuperHerois">
+            </label>
+          </div>
+
+          <div class="inputs-low">
+
+            <label>Carros
+              <input type="checkbox" class="form-control" formControlName="fazTemaCarros">
+            </label>
+
+            <label>Times
+              <input type="checkbox" class="form-control" formControlName="fazTemaTimes">
+            </label>
+
+            <label>Dinossauros
+              <input type="checkbox" class="form-control" formControlName="fazTemaDinossauros">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+
           <label for="cep">CEP</label>
-          <input type="string" class="form-control" id="cep" name="cep" placeholder="Digite o CEP" required="true" [(ngModel)]="usuarioACadastrar.cep">
+          <input type="string" class="form-control" formControlName="cep"
+          id="cep" name="cep" max=8 placeholder="Digite o CEP" 
+            >
         </div>
-      </div>
-      <div class="col-3">
-        <div class="form-group">
+
+        <div class="col-3">
+
           <button type="button" class="btn btn-primary" (click)="pesquisarCep()">Pesquisar</button>
         </div>
       </div>
       <div class="col-3">
-        <div class="form-group">
-          <label for="numero">Número</label>
-          <input type="text" class="form-control" id="numero" placeholder="Número" [(ngModel)]="usuarioACadastrar.numeroResidencia">
-        </div>
+
+        <label for="numero">Número</label>
+        <input type="text" class="form-control" id="numero" placeholder="Número"
+          formControlName="numeroResidencia">
       </div>
+
       <div class="col-3">
-        <div class="form-group">
-          <label for="complemento">Complemento</label>
-          <input type="text" class="form-control" id="complemento" placeholder="Complemento">
-        </div>
+
+        <label for="complemento">Complemento</label>
+        <input type="text" class="form-control" id="complemento" placeholder="Complemento">
       </div>
-    </div>
-  </form>
+
+      <div class="contatos">
+        <label for="contatos">Rede Social</label>
+        <input type="text" id="contatos" name="contatos" placeholder="Facebook, Instagram, etc">
+      </div>
+  
+  
+      <!--Campo para digitar telefone-->
+      <div class="telefone">
+        <label for="telefone">Telefone</label>
+        <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <div class="button-finish-back">
+        <a class="button-back" src="" routerLink="/home">Voltar</a>
+        <!-- <a class="button-finish" type="submit">Finalizar</a> -->
+      </div>
+
+    </form>
 
     <div class="endereco">
       <label for="endereco">Endereço</label>
-      <input type="text" id="endereco" name="endereco" placeholder="Rua, Avenida, etc" [(ngModel)]="rua">
+      <input type="text" id="logradouro" name="logradouro" placeholder="Rua, Avenida, etc" disabled="">
     </div>
 
     <!--Campo para digitar Bairro-->
-    <div class="bairro">
+    <div>
       <label for="bairro">Bairro</label>
-      <input type="text" id="bairro" name="bairro" placeholder="Bairro">
+      <input type="text" id="bairro" name="bairro" placeholder="Bairro" disabled="true" >
     </div>
 
     <!--Campo para digitar Cidade-->
-    <div class="cidade">
+    <div>
       <label for="cidade">Cidade</label>
-      <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+      <input type="text" id="cidade" name="cidade" placeholder="Cidade" disabled="true">
     </div>
 
     <!--Campo para digitar Estado-->
-    <div class="estado">
+    <div>
       <label for="estado">Estado</label>
-      <input type="text" id="estado" name="estado" placeholder="Estado">
+      <input type="text" id="estado" name="estado" placeholder="Estado" disabled="true">
     </div>
 
 
 
     <!-- Campo para contatos (facebook, instagram, etc) e telefone-->
 
-    <div class="contatos">
-      <label for="contatos">Rede Social</label>
-      <input type="text" id="contatos" name="contatos" placeholder="Facebook, Instagram, etc">
-    </div>
 
 
-    <!--Campo para digitar telefone-->
-    <div class="telefone">
-      <label for="telefone">Telefone</label>
-      <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-    </div>
 
-
-    <div class="button-finish-back">
-      <a class="button-back" src="" routerLink="/home">Voltar</a>
-      <a class="button-finish" src="" (click)="cadastrar()">Finalizar</a>
-    </div>
+    
 
     <footer></footer>
 
