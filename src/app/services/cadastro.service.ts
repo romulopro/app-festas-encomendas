@@ -29,4 +29,9 @@ export class CadastroService {
     });
       
   }
+  usuarioEhFornecedor(): Promise<any> {
+    return this.authService.getAuth().currentUser.then((user) => {
+      return this.db.collection('fornecedores').doc(user?.uid).get();
+    });
+  }
 }

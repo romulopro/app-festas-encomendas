@@ -21,32 +21,41 @@
           </div>
 
           <div class="inputs-up">
+            <div formGroupName="massa">
+                
             <label>Chocolate
-              <input type="checkbox" formControlName="fazMassaChocolate" class="form-control" name="chocolate">
+              <input type="checkbox" class="form-control" formControlName="chocolate">
             </label>
 
             <label>Prestigio
-              <input type="checkbox" formControlName="fazMassaPrestigio" class="form-control" name="prestigio">
+              <input type="checkbox"  formControlName="prestigio" class="form-control" name="prestigio">
             </label>
+            </div>
 
+            <div formGroupName="recheio">
             <label>Musse de Maracuja
-              <input type="checkbox" class="form-control" formControlName="fazRecheioMusseMaracuja">
+              <input type="checkbox" class="form-control"  formControlName="musseMaracuja">
             </label>
+          </div>
           </div>
 
           <div class="inputs-low">
 
+            <div formGroupName="massa">
             <label>Baunilha
-              <input type="checkbox" class="form-control" formControlName="fazMassaBaunilha">
+              <input type="checkbox" class="form-control" formControlName="baunilha">
             </label>
 
             <label>Brigadeiro
-              <input type="checkbox" class="form-control" formControlName="fazMassaBrigadeiro">
+              <input type="checkbox" class="form-control"  formControlName="brigadeiro">
             </label>
+            </div>
 
+            <div formGroupName="recheio">
             <label>Musse de Morango
-              <input type="checkbox" class="form-control" formControlName="fazRecheioMusseMorango">
+              <input type="checkbox" class="form-control" formControlName="musseMorango">
             </label>
+            </div>
           </div>
         </div>
       </div>
@@ -58,17 +67,18 @@
             <p class="text">Docinhos:</p>
           </div>
 
-          <div class="inputs-up">
+
+          <div class="inputs-up" formGroupName="doce">
             <label>Cajuzinho
-              <input type="checkbox" class="form-control" formControlName="fazCajuzinho">
+              <input type="checkbox" class="form-control"  formControlName="cajuzinho">
             </label>
 
             <label>Brigadeiro
-              <input type="checkbox" class="form-control" formControlName="fazBrigadeiro">
+              <input type="checkbox" class="form-control"  formControlName="brigadeiro">
             </label>
 
             <label>Beijinho
-              <input type="checkbox" class="form-control" formControlName="fazBeijinho">
+              <input type="checkbox" class="form-control"  formControlName="beijinho">
             </label>
           </div>
         </div>
@@ -84,34 +94,36 @@
             <p class="text">Temas:</p>
           </div>
 
+          <div formGroupName="tema">
           <div class="inputs-up">
             <label>Princesas
-              <input type="checkbox" class="form-control" formControlName="fazTemaPrincesas">
+              <input type="checkbox" class="form-control"  formControlName="princesas">
             </label>
 
             <label>Animais
-              <input type="checkbox" class="form-control" formControlName="fazTemaAnimais">
+              <input type="checkbox" class="form-control"  formControlName="animais">
             </label>
 
             <label>Super Herois
-              <input type="checkbox" class="form-control" formControlName="fazTemaSuperHerois">
+              <input type="checkbox" class="form-control"  formControlName="superHerois">
             </label>
           </div>
 
           <div class="inputs-low">
 
             <label>Carros
-              <input type="checkbox" class="form-control" formControlName="fazTemaCarros">
+              <input type="checkbox" class="form-control"  formControlName="carros">
             </label>
 
             <label>Times
-              <input type="checkbox" class="form-control" formControlName="fazTemaTimes">
+              <input type="checkbox" class="form-control"  formControlName="times">
             </label>
 
             <label>Dinossauros
-              <input type="checkbox" class="form-control" formControlName="fazTemaDinossauros">
+              <input type="checkbox" class="form-control"  formControlName="dinossauros">
             </label>
           </div>
+        </div>
         </div>
       </div>
       <div class="row">

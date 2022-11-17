@@ -1,23 +1,23 @@
 export class UsuarioDados {
-    id!: string;
     nome!: string;
     cep!: string;
     numeroResidencia!: number;
     complementoResidencia!: number;
     telefone!: string;
-    fazMassaPrestigio!: boolean;
-    fazMassaBrigadeiro!: boolean;
-    fazMassaBaunilha!: boolean;
-    fazMassaChocolate!: boolean;
-    fazRecheioMusseMaracuja!: boolean;
-    fazRecheioMusseMorango!: boolean;
-    fazCajuzinho!: boolean;
-    fazBeijinho!: boolean;
-    fazBrigadeiro!: boolean;
-    fazTemaCarros!: boolean;
-    fazTemaTimes!: boolean;
-    fazTemaPrincesas!: boolean;
-    fazTemaSuperHerois!: boolean;
-    fazTemaAnimais!: boolean;
-    fazTemaDinossauros!: boolean;
+    doces!:{ 
+        beijinho: boolean;
+        brigadeiro: boolean;
+        cajuzinho: boolean;
+    }
+    massas!:{
+        baunilha: boolean;
+        brigadeiro: boolean;
+        chocolate: boolean;
+        prestigio: boolean;
+    }
+    recheios!:{
+        musseMaracuja: boolean;
+        musseMorango: boolean;
+    }    
 }
+

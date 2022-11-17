@@ -7,6 +7,9 @@ import { UsuarioLogin } from '../interfaces/usuario-login';
   providedIn: 'root'
 })
 export class AutenticacaoService {
+  logout() {
+    this.afa.signOut();
+  }
   
   constructor(private afa: AngularFireAuth) { }
 

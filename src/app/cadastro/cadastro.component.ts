@@ -32,21 +32,29 @@ public cadastroForm: FormGroup;
         numeroResidencia : 0,
         complementoResidencia : '',
         telefone : '',
-        fazMassaPrestigio : false,
-        fazMassaBrigadeiro : false,
-        fazMassaBaunilha : false,
-        fazMassaChocolate : false,
-        fazRecheioMusseMaracuja : false,
-        fazRecheioMusseMorango : false,
-        fazCajuzinho : false,
-        fazBeijinho : false,
-        fazBrigadeiro : false,
-        fazTemaCarros : false,
-        fazTemaTimes : false,
-        fazTemaPrincesas : false,
-        fazTemaSuperHerois : false,
-        fazTemaAnimais : false,
-        fazTemaDinossauros : false
+        doce :  this.formBuider.group({
+          brigadeiro : false,
+          beijinho : false,
+          cajuzinho : false,
+        }),
+        massa : this.formBuider.group({
+          prestigio : false,
+          baunilha : false,
+          chocolate : false,
+          brigadeiro : false,
+        }),
+        recheio : this.formBuider.group({ 
+          musseMaracuja : false,
+          musseMorango : false,
+        }),
+        tema: this.formBuider.group({
+          carros : false,
+          times : false,
+          princesas : false,
+          superHerois : false,
+          animais : false,
+          dinossauros : false,
+        })
       });
 
       this.authService.getAuth().currentUser.then((user) => {
