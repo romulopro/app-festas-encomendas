@@ -12,7 +12,7 @@
         <div class="col-md-3">
             <button routerLink="/cadastro">{{ehFornecedor? 'Editar cadastro' : 'Cadastrar como confeteira(o)'}}</button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" *ngIf="!ehFornecedor">
             <button routerLink="/cadastro">Procurar</button>
         </div>
     </div>
