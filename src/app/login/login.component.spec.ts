@@ -22,4 +22,11 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('Deve mostrar uma mensagem de senha incorreta se senha errada for digitada', ()=>{
+  //   component = new LoginComponent();
+  //   component.onSubmit();
+  //   expect(component.errors).toContain('Senha incorreta');
+    
+  // })
 });

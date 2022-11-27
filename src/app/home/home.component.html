@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <p>Servicos prestados:</p>
+            <p>{{ehFornecedor? 'Servicos prestados:' : ''}}</p>
         </div>
 
         <div class="col-md-6">
@@ -10,13 +10,34 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <button routerLink="/cadastro">Editar cadastro</button>
+            <button routerLink="/cadastro">{{ehFornecedor? 'Editar cadastro' : 'Cadastrar como confeteira(o)'}}</button>
         </div>
-        
+        <div class="col-md-3">
+            <button routerLink="/cadastro">Procurar</button>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <button (onClick)="logout()">Sair</button>
+            <button (click)="logout()">Sair</button>
+        </div>
+    </div>
+<br>
+    <div class="row">
+        <div class="column-md-9">
+            <table *ngIf="ehFornecedor">
+
+                <thead>
+                    Servicos realizados
+                </thead>
+                <tbody>
+                   
+                        <tr *ngIf="dadosFornecedor?.doces?.beijinho">beijinho</tr>
+                        <tr *ngIf="dadosFornecedor?.doces?.brigadeiro">brigadeiro</tr>
+                        <tr *ngIf="dadosFornecedor?.doces?.cajuzinho">cajuzinho</tr>
+                    
+                    
+                </tbody>
+            </table>
         </div>
     </div>
 

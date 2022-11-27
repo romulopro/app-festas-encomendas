@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 import { UsuarioDados } from '../interfaces/usuario-dados';
 import { AutenticacaoService } from './autenticacao.service';
 
@@ -9,29 +10,34 @@ import { AutenticacaoService } from './autenticacao.service';
 })
 export class CadastroService {
   userId: any;
-  recuperaDadosUsuario(id: string | undefined) {
-    //should get user config from firebase
-    return this.db.collection('fornecedores').doc(id).get();
-   
-  }
 
-  constructor(private authService: AutenticacaoService, private db:AngularFirestore) { 
-    
+  constructor(private authService: AutenticacaoService, private db: AngularFirestore) {
+    this.authService.getAuth().currentUser.then((user) => {
+      this.userId = user?.uid;
+    });
   }
 
   cria(fornecedor: UsuarioDados): Promise<any> {
     //should create usuario-dados in firebase
-    console.log(fornecedor);
-    return this.authService.getAuth().currentUser.then((user) => {
-      console.log(user?.uid);
-      this.userId = user?.uid;
-      return this.db.collection('fornecedores').doc(this.userId).set(fornecedor);
-    });
-      
+    return this.db.collection('fornecedores').doc(this.userId).set(fornecedor);
   }
-  usuarioEhFornecedor(): Promise<any> {
-    return this.authService.getAuth().currentUser.then((user) => {
-      return this.db.collection('fornecedores').doc(user?.uid).get();
-    });
+
+  usuarioEhFornecedor() {
+    return this.db.collection('fornecedores').doc(this.userId).get();
+  }
+
+  recuperaDadosUsuario(id: string):Observable<any> {
+    //should get user config from firebase
+    return this.db.collection('fornecedores').doc(id).valueChanges();
+  }
+
+  atualizaDadosUsuario(dados: UsuarioDados) {
+    //should update user config from firebase
+    return this.db.collection('fornecedores').doc(this.userId).update(dados);
+  }
+
+  deletaDadosUsuario(id: string) {
+    //should delete user config from firebase
+    return this.db.collection('fornecedores').doc(id).delete();
   }
 }

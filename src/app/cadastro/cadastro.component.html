@@ -21,7 +21,7 @@
           </div>
 
           <div class="inputs-up">
-            <div formGroupName="massa">
+            <div formGroupName="massas">
                 
             <label>Chocolate
               <input type="checkbox" class="form-control" formControlName="chocolate">
@@ -32,7 +32,7 @@
             </label>
             </div>
 
-            <div formGroupName="recheio">
+            <div formGroupName="recheios">
             <label>Musse de Maracuja
               <input type="checkbox" class="form-control"  formControlName="musseMaracuja">
             </label>
@@ -41,7 +41,7 @@
 
           <div class="inputs-low">
 
-            <div formGroupName="massa">
+            <div formGroupName="massas">
             <label>Baunilha
               <input type="checkbox" class="form-control" formControlName="baunilha">
             </label>
@@ -51,7 +51,7 @@
             </label>
             </div>
 
-            <div formGroupName="recheio">
+            <div formGroupName="recheios">
             <label>Musse de Morango
               <input type="checkbox" class="form-control" formControlName="musseMorango">
             </label>
@@ -68,7 +68,7 @@
           </div>
 
 
-          <div class="inputs-up" formGroupName="doce">
+          <div class="inputs-up" formGroupName="doces">
             <label>Cajuzinho
               <input type="checkbox" class="form-control"  formControlName="cajuzinho">
             </label>
@@ -94,7 +94,7 @@
             <p class="text">Temas:</p>
           </div>
 
-          <div formGroupName="tema">
+          <div formGroupName="temas">
           <div class="inputs-up">
             <label>Princesas
               <input type="checkbox" class="form-control"  formControlName="princesas">
@@ -170,7 +170,7 @@
         <a class="button-back" src="" routerLink="/home">Voltar</a>
         <!-- <a class="button-finish" type="submit">Finalizar</a> -->
       </div>
-
+      <button type="button" class="btn btn-primary" (click)="deletaDados()">Deletar Dados</button>
     </form>
 
     <div class="endereco">
