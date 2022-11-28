@@ -4,6 +4,8 @@ export class UsuarioDados {
     numeroResidencia!: number;
     complementoResidencia!: number;
     telefone!: string;
+    email!: string;
+    redesSociais!: string;
     doces!:{ 
         beijinho: boolean;
         brigadeiro: boolean;

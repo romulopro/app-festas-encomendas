@@ -10,6 +10,7 @@ import { AutenticacaoService } from './autenticacao.service';
 })
 export class CadastroService {
   userId: any;
+  dadosFornecedor!: UsuarioDados;
 
   constructor(private authService: AutenticacaoService, private db: AngularFirestore) {
     this.authService.getAuth().currentUser.then((user) => {

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Page_four</title> -->
+</head>
+<body>
+    <div class="container">
+     <div class="info">
+      
+      <div class="photo-info-pr"> 
+        <img class="photo-info" src="assets/images/login cozinha.png">
+        <p class="pr">Meu Dados</p>
+      </div>
+      
+     
+     </div>
+      
+     <form>
+   
+      <div class="form-input"> 
+        <label>Nome:</label>
+        <input class="inputs"  type="name" name="name" id="name" [(ngModel)]= "dadosFornecedor.nome"/>
+      </div>
+
+      <div class="form-input"> 
+        <label>Endereço:</label>
+        <input  class="inputs" type="name" name="endereco" id="endereco" [(ngModel)]= "dadosFornecedor.cep" />
+      </div>
+  
+      <div class="form-input"> 
+        <label>Telefone:</label>
+        <input class="inputs"  type="name" name="telefone" id="telefone" [(ngModel)]= "dadosFornecedor.telefone"/>
+      </div>
+  
+      <div  class="form-input"> 
+        <label>E-mail:</label>
+        <input class="inputs"  type="email" name="email" id="email" [(ngModel)]= "dadosFornecedor.email"/>
+      </div>
+     
+      <div class="form-input"> 
+        <label>Redes Sociais:</label>
+        <input class="inputs" type="text" name="redesSociais" id="redesSociais" [(ngModel)]= "dadosFornecedor.redesSociais"/>
+      </div>
+   
+      <button type="button" class="btn btn-primary" (click)="pesquisarCep()">Pesquisar</button>
+      <!-- <div class="form-input"> 
+        <label>Confime a senha:</label>
+        <input class="inputs"  type="password" name="senha-conf" id="senha-conf"/>
+      </div> -->
+
+     </form>
+      
+      <footer> 
+        <div class="buttons"> 
+          <button routerLink="/cadastro">Voltar</button>
+          <button (click)="criaFornecedor()">Cadastro</button>
+        </div>
+      </footer>
+    
+    
+    </div> 
+    <div class="endereco">
+        <label for="endereco">Endereço</label>
+        <input type="text" id="logradouro" name="logradouro" placeholder="Rua, Avenida, etc" disabled="">
+      </div>
+  
+      <!--Campo para digitar Bairro-->
+      <div>
+        <label for="bairro">Bairro</label>
+        <input type="text" id="bairro" name="bairro" placeholder="Bairro" disabled="true" >
+      </div>
+  
+      <!--Campo para digitar Cidade-->
+      <div>
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Cidade" disabled="true">
+      </div>
+  
+      <!--Campo para digitar Estado-->
+      <div>
+        <label for="estado">Estado</label>
+        <input type="text" id="estado" name="estado" placeholder="Estado" disabled="true">
+      </div>
+</body>
+</html>

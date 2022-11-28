@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { HomeComponent } from './home/home.component';
+import { DadosFornecedorComponent } from './dados-fornecedor/dados-fornecedor.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     CadastroComponent,
     HomeComponent,
+    DadosFornecedorComponent,
     
   ],
   imports: [

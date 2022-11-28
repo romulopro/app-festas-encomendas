@@ -17,18 +17,19 @@ import { ConsultaCepService } from '../services/consulta-cep.service';
 export class CadastroComponent implements OnInit {
 
 
+
   public cadastroForm: FormGroup;
 
 
-  
+
   userId: any;
   constructor(private router: Router,
     private cadastroService: CadastroService,
     private authService: AutenticacaoService,
-    private consultaCepService: ConsultaCepService
-    , private formBuider: FormBuilder) {
+    private consultaCepService: ConsultaCepService,
+    private formBuider: FormBuilder) {
     this.cadastroForm = this.formBuider.group({
-      
+
       cep: '',
       nome: '',
       numeroResidencia: 0,
@@ -60,65 +61,21 @@ export class CadastroComponent implements OnInit {
     });
 
     this.authService.getAuth().currentUser.then((user) => {
-      // this.cadastroForm.setValue({userId :user?.uid });
       console.log(user?.uid);
       this.userId = user?.uid;
-
     });
   }
 
-
-  //   export class UsuarioDados {
-  //     id!: string;
-  //     nome!: string;
-  //     cep!: string;
-  //     numeroResidencia!: number;
-  //     complementoResidencia!: number;
-  //     telefone!: string;
-  //     fazMassaPrestigio!: boolean;
-  //     fazMassaBrigadeiro!: boolean;
-  //     fazMassaBaunilha!: boolean;
-  //     fazMassaChocolate!: boolean;
-  //     fazRecheioMusseMaracuja!: boolean;
-  //     fazRecheioMusseMorango!: boolean;
-  //     fazCajuzinho!: boolean;
-  //     fazBeijinho!: boolean;
-  //     fazBrigadeiro!: boolean;
-  //     fazTemaCarros!: boolean;
-  //     fazTemaTimes!: boolean;
-  //     fazTemaPrincesas!: boolean;
-  //     fazTemaSuperHerois!: boolean;
-  //     fazTemaAnimais!: boolean;
-  //     fazTemaDinossauros!: boolean;
-  // }
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   onSubmit() {
     this.cadastroForm.patchValue({ userId: this.userId });
-    this.cadastroService.cria(this.cadastroForm.value as UsuarioDados);
+    this.cadastroService.dadosFornecedor = this.cadastroForm.value as UsuarioDados
+    //this.cadastroService.cria(this.cadastroForm.value as UsuarioDados);
+    this.router.navigate(['/dados-fornecedor']);
   }
 
-  async pesquisarCep() {
-    //should get cep data from viacep
-    //console.dir(this.cadastroForm.value);
-    this.consultaCepService.consultaCEP(this.cadastroForm.value['cep']).subscribe((dados: any) => {
 
-      //this.rua = dados.logradouro;
-      document.getElementById('logradouro')?.setAttribute('value', dados.logradouro);
-      document.getElementById('bairro')?.setAttribute('value', dados.bairro);
-      document.getElementById('cidade')?.setAttribute('value', dados.localidade);
-      document.getElementById('estado')?.setAttribute('value', dados.uf);
-
-      // this.estado = dados.uf;
-      // this.bairro = dados.bairro;
-      //this.cidade = dados.localidade;
-      console.log(dados);
-
-
-    });
-  }
 
   async deletaDados() {
     this.cadastroService.deletaDadosUsuario(this.userId).then(() => {
@@ -128,4 +85,6 @@ export class CadastroComponent implements OnInit {
     }
     );
   }
+
+  
 }
