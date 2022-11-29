@@ -11,64 +11,31 @@ import { CadastroService } from '../services/cadastro.service';
 })
 export class HomeComponent implements OnInit {
 
-  //userId: string;
-
   ehFornecedor = false;
-  dadosFornecedor? : UsuarioDados;
-Object: any;
+  dadosFornecedor?: UsuarioDados;
   constructor(private cadastroService: CadastroService,
     private authService: AutenticacaoService,
-    private router: Router) {}
+    private router: Router) { }
 
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    //this.userId = "";
+    
   }
-
-
-
 
   ngOnInit(): void {
     console.log(this.cadastroService.userId);
     this.cadastroService.recuperaDadosUsuario(this.cadastroService.userId).subscribe({
-      next: (dados:UsuarioDados) => {
-        if(dados != null){
-        for(let key in dados.doces){
-          console.log(key);
+      next: (dados: UsuarioDados) => {
+        if (dados == null || dados == undefined) {
+          this.ehFornecedor = false;
         }
-        console.log(dados);
         this.dadosFornecedor = dados;
         this.ehFornecedor = true;
-      }else{
-        this.ehFornecedor = false;
-      }
       },
-      error: (error) => {
-        console.log(error);
+      error: () => {
         this.ehFornecedor = false;
       }
     });
-
-
-    // this.cadastroService.usuarioEhFornecedor()
-    //   .subscribe((dados) => {
-    //     if (dados.exists) {
-    //       console.log(dados);
-    //       this.ehFornecedor = true;
-    //       this.cadastroService.recuperaDadosUsuario(dados.id).subscribe((dados) => {
-            
-    //         this.dadosFornecedor = dados;
-    //         console.log(this.dadosFornecedor);
-    //         for(let key in this.dadosFornecedor.doce) {
-    //           console.log(key);
-    //         }
-    //       }
-    //       );
-    //     }
-    //   }
-    //   );
 
   }
   logout() {
