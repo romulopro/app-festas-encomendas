@@ -16,17 +16,81 @@
   
 <div class="container">
     <div class="row">
+        <div class="col-md-6">
+            <p>Servicos prestados:</p>
+        </div>
+
+        <div class="col-md-6">
+            <p>Contratar</p>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-3">
             <button routerLink="/cadastro">Editar cadastro</button>
-            <button routerLink="/cadastro">Meus Pedidos</button>
-            <button routerLink="/cadastro">Novo Pedido</button>
-            <button routerLink="/cadastro">Mensagens</button>
         </div>
+        
     </div>
 
     <div class="row">
         <div class="col-md-3">
-            <button (onClick)="logout()">Sair</button>
+            <button (click)="logout()">Sair</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="column-md-9" *ngIf="ehFornecedor">
+            <table>
+
+                <thead>
+                    Doces
+                </thead>
+                <br>
+                <tbody>
+                    <tr *ngIf="dadosFornecedor?.doces?.beijinho">beijinho</tr>
+                    <tr *ngIf="dadosFornecedor?.doces?.brigadeiro">brigadeiro</tr>
+                    <tr *ngIf="dadosFornecedor?.doces?.cajuzinho">cajuzinho</tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    Massas
+                </thead>
+                <br>
+                <tbody>
+                    <tr *ngIf="dadosFornecedor?.massas?.baunilha">Baunilha</tr>
+                    <tr *ngIf="dadosFornecedor?.massas?.brigadeiro">Brigadeiro</tr>
+                    <tr *ngIf="dadosFornecedor?.massas?.chocolate">Chocolate</tr>
+                    <tr *ngIf="dadosFornecedor?.massas?.prestigio">Prestígio</tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    Recheios
+                </thead>
+                <br>
+                <tbody>
+                    <tr *ngIf="dadosFornecedor?.recheios?.musseMaracuja">Musse de Maracujá</tr>
+                    <tr *ngIf="dadosFornecedor?.recheios?.musseMorango">Musse de Morango</tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    Temas
+                </thead>
+                <br>
+                <tbody>
+                    <tr *ngIf="dadosFornecedor?.temas?.animais">Animais</tr>
+                    <tr *ngIf="dadosFornecedor?.temas?.carros">Carros</tr>
+                    <tr *ngIf="dadosFornecedor?.temas?.dinossauros">Dinossauros</tr>
+                    <tr *ngIf="dadosFornecedor?.temas?.princesas">Princesas</tr>
+                    <tr *ngIf="dadosFornecedor?.temas?.superHerois">Super-Herois</tr>
+                    <tr *ngIf="dadosFornecedor?.temas?.times">Times</tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 
@@ -40,9 +104,3 @@
      </div>
     
 </div>
-<footer > 
-    <div class="copy">Desenvolvido pelos alunos da Univesp PI3 @2022</div>
-   </footer>
-
-</body>
-</html>

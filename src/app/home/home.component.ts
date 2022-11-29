@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioDados } from '../interfaces/usuario-dados';
 import { AutenticacaoService } from '../services/autenticacao.service';
 import { CadastroService } from '../services/cadastro.service';
 
@@ -10,40 +11,36 @@ import { CadastroService } from '../services/cadastro.service';
 })
 export class HomeComponent implements OnInit {
 
-  //userId: string;
-
-  ehFornecedor : boolean = false;
-  constructor(private cadastroService:CadastroService,
-    private authService:AutenticacaoService,
+  ehFornecedor = false;
+  dadosFornecedor?: UsuarioDados;
+  constructor(private cadastroService: CadastroService,
+    private authService: AutenticacaoService,
     private router: Router) { }
-      
 
 
-  
+  ngOnDestroy(): void {
+    
+  }
 
   ngOnInit(): void {
-    //should get user config from firebase
-    // this.authService.getAuth().currentUser.then((user) => {
-    //   // this.cadastroForm.setValue({userId :user?.uid });
-    //   console.log(user?.uid);
-    //   let userId = user?.uid;
-    //   this.cadastroService.recuperaDadosUsuario(userId).subscribe((dados) => {
-    //     console.log(dados.data());
-    //   } );
-    // });
-    this.cadastroService.usuarioEhFornecedor().then((dados) => {
-      if(dados.exists) {
+    console.log(this.cadastroService.userId);
+    this.cadastroService.recuperaDadosUsuario(this.cadastroService.userId).subscribe({
+      next: (dados: UsuarioDados) => {
+        if (dados == null || dados == undefined) {
+          this.ehFornecedor = false;
+        }
+        this.dadosFornecedor = dados;
         this.ehFornecedor = true;
-        console.log("eh fornecedor");
+      },
+      error: () => {
+        this.ehFornecedor = false;
       }
-    }
-    ).catch((error) => {
-      this.ehFornecedor = false;
-      console.log("nao eh fornecedor");
     });
+
+  }
+  logout() {
+    console.log("logout");
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
-logout() {
-  console.log("logout");
-  this.authService.logout();
-  this.router.navigate(['/login']);
-}}

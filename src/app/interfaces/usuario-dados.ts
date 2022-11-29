@@ -4,6 +4,8 @@ export class UsuarioDados {
     numeroResidencia!: number;
     complementoResidencia!: number;
     telefone!: string;
+    email!: string;
+    redesSociais!: string;
     doces!:{ 
         beijinho: boolean;
         brigadeiro: boolean;
@@ -18,6 +20,14 @@ export class UsuarioDados {
     recheios!:{
         musseMaracuja: boolean;
         musseMorango: boolean;
-    }    
+    } 
+    temas!:{
+        animais: boolean;
+        carros: boolean;
+        dinossauros: boolean;
+        princesas: boolean;
+        superHerois: boolean;
+        times: boolean;
+    }   
 }
 
