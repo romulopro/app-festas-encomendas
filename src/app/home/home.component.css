@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Ingrid+Darling&display=swap');
+
+.maximoHeight {
+    height: 100%;
+  }
+body{
+    background-color: rgb(156, 245, 245);
+}
+header{
+    background-color:#068179;
+    padding: 10px;
+}
+h1{
+    color: aliceblue;
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Ingrid Darling', cursive;
+    padding-top: 30px;
+    
+}
+.button-header{
+    display: flex;
+    justify-content:space-around;
+    padding-top: 50px;
+    font-size: 35px;
+   
+}
+.row{
+    display:grid;
+    justify-content:space-around;
+    background-color: rgb(156, 245, 245);
+}
+.col-md-3{
+    display: flex;
+    gap: 10%;
+}
+.col-md-3 button{
+    border: none;
+    color: #000000;
+    background-color: rgb(156, 245, 245);
+    font-size: 20px;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 10px;
+    width: 190%;
+    height: 90px;
+    }
+.col-md-3 button:hover{
+    color: #f84002;
+}
+.photos{
+    display:flex;
+    gap: 100px;
+    padding: 80px;
+}
+
+.photo-one,.photo-two,.photo-three{
+    height: 205px;
+    width: 186px;
+    border: 1px solid #09A49A;
+    border-radius: 200px;
+}
+
+footer{
+    background-color:#068179;
+    height: 85px;
+    height: 100px;
+}
+
+.copy{
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: aliceblue;
+}

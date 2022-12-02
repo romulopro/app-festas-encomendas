@@ -1,7 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/assets/css/page_one.css"/>
+    <title>page_one</title>
+</head>
+<body>
+    <header> 
+       <div> 
+           <h1> Sua festa descomplicada, no dia e hora marcado em um match perfeito!</h1>
+                </div>
+    </header>
+  
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <p>{{ehFornecedor? 'Servicos prestados:' : ''}}</p>
+            <p>Servicos prestados:</p>
         </div>
 
         <div class="col-md-6">
@@ -10,12 +26,11 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <button routerLink="/cadastro">{{ehFornecedor? 'Editar cadastro' : 'Cadastrar como confeteira(o)'}}</button>
+            <button routerLink="/cadastro">Editar cadastro</button>
         </div>
-        <div class="col-md-3" *ngIf="!ehFornecedor">
-            <button routerLink="/cadastro">Procurar</button>
-        </div>
+        
     </div>
+
     <div class="row">
         <div class="col-md-3">
             <button (click)="logout()">Sair</button>
@@ -79,4 +94,13 @@
         </div>
     </div>
 
+         
+    <div> 
+        <div class="photos"> 
+          <img class="photo-one" src="assets/images/photo1.jpg">
+          <img class="photo-two" src="assets/images/photo2.jpg">
+          <img class="photo-three" src="assets/images/photo3.png">
+        </div>
+     </div>
+    
 </div>
